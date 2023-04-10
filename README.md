@@ -17,3 +17,7 @@ or
 
 Use your browser to access the application via one of the ports 80 or 443 of your IP.
 You can also find the URL in the Python shell log.
+
+## Contribution
+
+Please look into [CONTRIBUTING](CONTRIBUTING.md)
