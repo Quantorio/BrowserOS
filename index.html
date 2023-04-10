@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="de">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+	<meta http-equiv="Pragma" content="no-cache"/>
+	<meta http-equiv="Expires" content="0"/>
+	<title>Gärtnerhilfe</title>
+	<style>
+	  body,table {
+	    width: 100%;
+	    height: 100%;
+		overflow:hidden;
+	  }
+	  .taskbar {
+	    position: absolute;
+	    top:0px;
+	    left:0px;
+	    height: 5%;
+	    width: 100%;
+	    background-color: darkgrey;
+	  }
+	 .desktop {
+	   height: 95%;
+	   width: 100%;
+	   position: absolute;
+	   top:5%;
+	   left: 0px;
+	   background-image: url('wallpaper.jpg');
+	   background-repeat: no-repeat;
+	 }
+	 .desktop-m {
+	   width: 90%;
+	   height: 100%;
+	   position: absolute;
+	   left: 15%;
+	   top: 0px;
+	   background-color: black;
+	 }
+	 .taskbar-m {
+	   width: 15%;
+	   height: 100%;
+	   position: absolute;
+	   left: 0px;
+	   top: 0px;
+	   background-color: lightgrey;
+	 }
+	 .dt-icon {
+	   width:10%;
+	   height: 10%;
+	   text-align: center;
+	 }
+	 .window {
+	   border: black solid 3px;
+	   position: absolute;
+	   opacity: 1;
+	   background-color: white;
+	   padding: .2em;
+		outline: 0;	
+	 }
+	 .window .header {
+		cursor: move;
+		padding: .4em 1em;
+		position: relative;
+		border: 1px solid #dddddd;
+		background: #e9e9e9;
+		color: #333333;
+		font-weight: bold;
+		ms-touch-action: none;
+		touch-action: none;
+		height:23px;	
+	}
+	.window .header, .window .header .window-close-btn{
+		border-bottom-right-radius: 3px;
+		border-bottom-left-radius: 3px;
+		border-top-right-radius: 3px;
+		border-top-left-radius: 3px;
+	}
+	.ui-btn{
+    padding: .4em 1em;
+    display: inline-block;
+    position: relative;
+    line-height: normal;
+    margin-right: .1em;
+    cursor: pointer;
+    vertical-align: middle;
+    text-align: center;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    overflow: visible;
+	}
+	 .window .header .title {
+		width: 90%;
+		overflow: hidden;
+		float: left;
+		margin: .1em 0;
+		height: 20px;
+	}
+	.window .header:before,
+	.window .header:after {
+		content: "";
+		display: table;
+		border-collapse: collapse;
+	}
+	.window .header:after {
+		clear: both;
+	}
+	.ui-icon{background-image: url("jquery-ui-1.12.1/images/ui-icons_777777_256x240.png");}
+	.ui-btn:hover,
+	.ui-button:hover{background-color:#ededed !important;}
+	.ui-icon-close {background-position: -96px -128px;}
+	.ui-icon-home { background-position: 0 -112px; }
+	.taskbar .ui-button {float:left;width: 16px;height: 16px;position:relative;top:25%;left:10px;}
+	.taskbar .ui-icon-home {position:relative;top:0px;}
+	.window .header .window-close-btn{
+		position: absolute;
+		right: .3em;
+		top: 50%;
+		width: 20px;
+		margin: -10px 0 0 0;
+		padding: 1px;
+		height: 20px;
+		border: 1px solid #c5c5c5;
+		background: #f6f6f6;
+		font-weight: normal;
+		color: #454545;
+		text-indent: -99999px;
+	}
+	.ui-icon {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-top: -8px;
+		margin-left: -8px;
+	}
+	.ui-icon {
+		width: 16px;
+		height: 16px;
+	}
+	.ui-icon {
+		display: inline-block;
+		vertical-align: middle;
+		text-indent: -99999px;
+		overflow: hidden;
+		background-repeat: no-repeat;
+	}
+	.window .header .window-close-btn::-moz-focus-inner {
+		border: 0;
+		padding: 0;
+	}
+	.startmenu, .property {
+		position: absolute;
+		top: 5%;
+		left: 0px;
+		background-color: #ececec;
+		width: 10%;
+		border: solid #ececec;
+		border-top-left-radius: 0px !important;
+		border-top-right-radius: 0px !important;
+		border-radius: 10px;
+	}
+	.startmenu div:hover{
+		background-color:lightgrey;
+	}
+	.clock{
+		float:right;
+		height:100%;
+		width:150px;
+	}
+	.window .content {
+		overflow-y:scroll;
+		width:100%;
+		height:calc(100% - 35px);
+	}
+	attr{
+		visibility:hidden;
+	}
+	</style>
+	<link rel="stylesheet" href="winbox-modern.min.css">
+</head>
+<body style="background-color:black;">
+  <div class="taskbar"><span class="clock"></span><div type="button" class="ui-button" title="Startmenu" onclick="startmenu(event);"><div class="ui-icon-home ui-icon"></div></div></div>
+  <div class="desktop"></div>
+  <script src="util.js"></script>
+  <script src="modules.js"></script>
+  <script src="jquery.js"></script>
+  <script src="jquery-ui.js"></script>
+  <script src="winbox.bundle.min.js"></script>
+  <script src="modal.js"></script>
+  <script src="browserfs.min.js"></script>
+  <script src="filesystem.js"></script>
+  <script src="programs.js"></script>
+  <script src="container.js"></script>
+  <script src="chart.min.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>
