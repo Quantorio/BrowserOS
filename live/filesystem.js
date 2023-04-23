@@ -7,7 +7,7 @@ let listing = {
 var a=e=>{
 BrowserFS.FileSystem.XmlHttpRequest.Create({
 	index: e||listing,
-	baseUrl: "/fs?path="
+	baseUrl: "https://quantorio.github.io/BrowserOS/live/resources/"
 }, function(e, lsfs) {
 BrowserFS.FileSystem.LocalStorage.Create({}, function(e, idbfs) {
 	  BrowserFS.FileSystem.MountableFileSystem.Create({
@@ -22,6 +22,6 @@ BrowserFS.FileSystem.LocalStorage.Create({}, function(e, idbfs) {
 	});
 });
 };
-fetch("listing.json.php").then(e=>e.json()).then(e=>a(e));
+fetch("listing.json").then(e=>e.json()).then(e=>a(e));
 
 })();
