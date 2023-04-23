@@ -7,7 +7,7 @@ let listing = {
 var a=e=>{
 BrowserFS.FileSystem.XmlHttpRequest.Create({
 	index: e||listing,
-	baseUrl: "https://quantorio.github.io/BrowserOS/live/resources/"
+	baseUrl: "https://raw.githubusercontent.com/Quantorio/BrowserOS/NEWBRANCH/live/filesystem/"
 }, function(e, lsfs) {
 BrowserFS.FileSystem.LocalStorage.Create({}, function(e, idbfs) {
 	  BrowserFS.FileSystem.MountableFileSystem.Create({
