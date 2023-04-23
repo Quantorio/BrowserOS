@@ -199,7 +199,7 @@ const checkPerm=(function(){
 
 var clock="";
 //var cInt=setInterval(_=>{clock+=1000;if(isNaN(clock))clock=Date.now();$(".clock").html(formatted_date(clock));$.ajax({"url":"/up"}).success(_).error(_=>{})},1000)
-//$.ajax({url:"/clock"}).success(e=>$(".clock").html(formatted_date(clock=parseInt(e)))).error(_=>{clock=Date.now();})
+$.ajax({url:"/clock"}).success(e=>$(".clock").html(formatted_date(clock=parseInt(e)))).error(_=>{clock=Date.now();})
 
 for(var i=0;i<programs.length;i++){
 	for(const b in programs[i].permissions){
