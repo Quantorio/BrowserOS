@@ -388,5 +388,18 @@ async function containerToWindow(){
 }
 
 window.requestAnimationFrame
-window.addEventListener("DOMContentLoaded",()=>{Notification.requestPermission().then(function(result) {console.log(result);});})
+window.addEventListener("DOMContentLoaded",()=>{Notification.requestPermission().then(function(result) {console.log(result);});});
+(function() {
+  var a = document.createElement("script")
+  a.src = "https://cdn.jsdelivr.net/npm/marked/marked.min.js"
+  document.body.append(a)
+  const readme=()=>fetch('https://raw.githubusercontent.com/Quantorio/BrowserOS/main/README.md')
+    .then(response => response.text())
+    .then(result => marked.marked(result)).then(result => createWindow({
+      start: function() {
+        readme();
+      }
+    }, "Welcome", result)).then(([hwnd, window]) => hwnd.find("a[href='CONTRIBUTING.md']").on("click",()=>location.href="https://github.com/Quantorio/BrowserOS/blob/main/CONTRIBUTING.md").attr("href","#"));
+  readme();
+})();
 })();
