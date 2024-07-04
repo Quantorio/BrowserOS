@@ -22,3 +22,6 @@ You can also find the URL in the Python shell log.
 ## Contribution
 
 Please look into [CONTRIBUTING](CONTRIBUTING.md)
+
+
+[Current roadmap](https://github.com/users/Quantorio/projects/3)
