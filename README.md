@@ -1,4 +1,5 @@
 # BrowserOS
+ [![pages-build-deployment](https://github.com/Quantorio/BrowserOS/actions/workflows/pages/pages-build-deployment/badge.svg?branch=NEWBRANCH)](https://github.com/Quantorio/BrowserOS/actions/workflows/pages/pages-build-deployment)
  
 BrowserOS is designed to work largely in the browser.
 It is based on Javascript.
