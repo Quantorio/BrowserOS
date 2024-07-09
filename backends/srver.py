@@ -1,3 +1,7 @@
+##########################
+# Just primitive backend #
+##########################
+
 from flask import Flask, send_file, jsonify, request
 import os
 app=Flask(__name__)
