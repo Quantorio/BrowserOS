@@ -163,5 +163,6 @@ window.Container.init=function(){
 		createWindow=createWindowFn;
 		xmlRequest=xmlRequestObj
 		init=true;
+		window.Container=Container;
 	}
 }()
