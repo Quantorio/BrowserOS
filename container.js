@@ -1,3 +1,4 @@
+window.Container={};
 window.Container.init=function(){
 	let init=false, dummy=()=>{throw new Error("Containers not initialized")},checkPerm=dummy,createWindow=dummy, xmlRequest,
 		notAllowedKeysToAccess=["permissions","name","icon","pos","start","stop"];
