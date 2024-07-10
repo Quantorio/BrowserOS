@@ -316,6 +316,7 @@ window.addEventListener("FSReady",function(){
 			if(after!==0)return after.after(button);
 			hwnd.append(button)
 		}
+		window.Container.init(checkPerm, createWindow, xmlRequest);
 		for(const i in window.programs){
 			hwnd.append("<br>");
 			const p=window.programs[i];
@@ -330,27 +331,13 @@ window.addEventListener("FSReady",function(){
 				var t=Container();
 				if(t===null)return;
 				t.eval(`window.start=${_.toSrc((p.start||new Function()))}`)
-				if(_.toSrc((p.start||new Function())).indexOf("window")>-1)throw new Error("window keyword currently not allowed due security risk");
-				if(_.toSrc((p.start||new Function())).indexOf("parent")>-1)throw new Error("parent keyword currently not allowed due security risk");
+				//if(_.toSrc((p.start||new Function())).indexOf("window")>-1)throw new Error("window keyword currently not allowed due security risk");
+				//if(_.toSrc((p.start||new Function())).indexOf("parent")>-1)throw new Error("parent keyword currently not allowed due security risk");
 				t.eval(`window.stop=${_.toSrc((p.stop||new Function()))}`)
-				if(_.toSrc((p.stop||new Function())).indexOf("window")>-1)throw new Error("window keyword currently not allowed due security risk");
-				if(_.toSrc((p.stop||new Function())).indexOf("parent")>-1)throw new Error("parent keyword currently not allowed due security risk");
+				//if(_.toSrc((p.stop||new Function())).indexOf("window")>-1)throw new Error("window keyword currently not allowed due security risk");
+				//if(_.toSrc((p.stop||new Function())).indexOf("parent")>-1)throw new Error("parent keyword currently not allowed due security risk");
 				/*t.start=(p.start||new Function()).bind(t);
 				t.stop=(p.stop||new Function()).bind(t);*/
-				t.icon=p.icon||"";
-				t.pos=p.pos||"";
-				t.createWindow=()=>{if(a===undefined)a=createWindow(p,p["name"],"",null,null,p['icon']||undefined);};
-				t.require=(function(){var list=["fs"];var o=window.require;return function(){if(list.indexOf(arguments[0])>-1){if(checkPerm(i,arguments[0]))return o(arguments[0]);throw Error("Not Allowed");}return o(arguments[0]);}})();
-				t.$={...$};
-				t.$.ajax=(function(){var o=window.$.ajax;return function(...m){console.log(m);if(!checkPerm(i,"Local Network")||m===[])return ajaxdefault;return o(...m)}})();
-				t.fetch=(function(){var o=window.fetch;return function(...m){if(!checkPerm(i,"Local Network")||m===[])return new Promise(_=>_);return o(...m)}})();
-				t.alert=(function(){var o=window.alert;return function(m){if(!checkPerm(i,"notify")||!m)return;o(m)}})();
-				t.XMLHttpRequest=(function(){var o=window.XMLHttpRequest;return function(){if(!checkPerm(i,"Local Network"))return xmlRequest;return new o;}})();
-				t.Notification=(function(){var o=window.Notification;return (message)=>{if(!checkPerm(i, "notify"))return;var t=document.getElementsByTagName("link");var img="";for(var i=0;t.length;i++){if(t[i].rel.toLowerCase()==="shortcut icon")img=t[i].href}var text = message;var notification = new o(`${document.title} - ${programs[i].name}`, { body: text, icon: img });return {close:_=>notification.close(),on:(e,a,o)=>notification.addEventListener(e,a,o),}}})();
-				t.programs=("Apps" in p.permissions && p.permissions["Apps"])?window.programs:[];
-				t.console=window.console;
-				t.window=t;
-				for(var ii of Object.keys(p)){if(ii!=="permissions")t[ii]=p[ii]}
 				
 				const obs=new MutationObserver(()=>containerToWindow());
 				obs.observe(t.document,{ attributes: true, childList: true, subtree: true });
